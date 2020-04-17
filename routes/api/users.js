@@ -44,6 +44,11 @@ router.post('/register', (req, res)=>{
                 avatar,
                 password:req.body.password
             })
+
+            if(req.body.password2 !== req.body.password){
+                errors.password2 = "password must match";
+                return res.status(400).json(errors);
+            }
             bcrypt.genSalt(10, (err, salt)=>{
                 bcrypt.hash(newUser.password, salt, (err, hash)=>{
                     if(err){
