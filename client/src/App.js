@@ -6,21 +6,48 @@ import Landing from "../src/components/Layout/Landing";
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Register from '../src/components/Auth/Register'
 import Login from "../src/components/Auth/Login";
+import {Provider} from 'react-redux'
+import store from './store'
+import jwt_decode from 'jwt-decode'
+import setAuthToken from './utils/setAuthToken'
+import {setCurrentUser,logoutUser} from './actions/authAction'
 
+
+// checking for storage
+if(localStorage.jwtToken){
+  // set auth token header auth
+  setAuthToken(localStorage.jwtToken)
+  // decode token and get user info and expiration
+  const decoded = jwt_decode(localStorage.jwtToken)
+  // calling the setcurrentuser action and isAuthenticated
+  store.dispatch(setCurrentUser(decoded))
+  // check for expire Token
+  const currentTime = Date.now() / 1000
+  if(decoded.exp < currentTime){
+    // logout user
+    store.dispatch(logoutUser())
+    // clear current profile
+
+    // redirect to login
+    window.location.href ='/login'
+  }
+}
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Navbar />
-        <Route exact path="/" component={Landing} />
-        <div className="container">
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/login" component={Login} />
+    <Provider store={store}>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Route exact path="/" component={Landing} />
+          <div className="container">
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </Router>
+      </Router>
+    </Provider>
   );
 }
 
