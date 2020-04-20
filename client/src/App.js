@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from '../src/components/Layout/Navbar'
 import Footer from "../src/components/Layout/Footer";
 import Landing from "../src/components/Layout/Landing";
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Register from '../src/components/Auth/Register'
 import Login from "../src/components/Auth/Login";
 import {Provider} from 'react-redux'
@@ -14,6 +14,7 @@ import {setCurrentUser,logoutUser} from './actions/authAction'
 import Dashboard from './components/Dashboard/Dashboard'
 import { clearCurrentProfile } from './actions/profileAction';
 
+import PrivateRoute from './components/common/PrivateRoute'
 // checking for storage
 if(localStorage.jwtToken){
   // set auth token header auth
@@ -45,7 +46,9 @@ function App() {
           <div className="container">
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/dashboard" component={Dashboard} />  
+            <Switch>
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />  
+            </Switch>
           </div>
           <Footer />
         </div>
