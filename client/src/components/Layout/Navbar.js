@@ -9,7 +9,7 @@ class Navbar extends Component {
     e.preventDefault()
     this.props.logoutUser()
   }
-
+ 
   render() {
     const { isAuthenticated, user } = this.props.auth;
 
@@ -20,7 +20,7 @@ class Navbar extends Component {
           <a
             href=""
             className="nav-link"
-            onclick={this.onLogoutClick.bind(this)}
+            onClick={this.onLogoutClick.bind(this)}
           >
             <img className="rounded-circle" src={user.avatar} alt={user.name} style={{marginRight:'5px', width:'25px'}} title="You must have a gravatar connected to your email to display image"/>
             {' '}

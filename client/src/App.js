@@ -21,7 +21,8 @@ if(localStorage.jwtToken){
   const decoded = jwt_decode(localStorage.jwtToken)
   // calling the setcurrentuser action and isAuthenticated
   store.dispatch(setCurrentUser(decoded))
-  // check for expire Token
+
+  // check for expire Token so i can log the user out when the token expires
   const currentTime = Date.now() / 1000
   if(decoded.exp < currentTime){
     // logout user
