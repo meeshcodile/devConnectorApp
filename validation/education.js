@@ -19,7 +19,6 @@ module.exports = function validateEducationInput(data) {
         errors.degree = 'degree field is required'
     }
 
-
     return {
         errors,
         isValid: isEmpty(errors)

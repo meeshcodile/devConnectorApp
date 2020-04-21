@@ -42,3 +42,48 @@ export const clearCurrentProfile = () => {
         type: actions.CLEAR_CURRENT_PROFILE
     }
 }
+// delete account and profile
+export const deleteAccount = () => dispatch=>{
+    if(window.confirm("Are you sure? this cannot be undone")){
+        axios.delete('/api/profile').then(res => dispatch({
+            type:actions.SET_CURRENT_USER,
+            payload:{}
+        }))
+        .catch(err => dispatch({
+            type:actions.GET_ERRORS,
+            payload:err.response.data
+        }))
+    }
+}
+
+// add user experience
+export const addExperience =(experienceData, history) => dispatch =>{
+    axios
+      .post("/api/profile/experience", experienceData)
+      .then(res=> {
+        //   console.log(res)
+        history.push("/dashboard");
+      })
+      .catch((err) =>
+        dispatch({
+          type: actions.GET_ERRORS,
+          payload: err.response.data,
+        })
+      );
+}
+
+// add user education
+export const addEducation =(educationData, history) => dispatch =>{
+    axios
+      .post("/api/profile/education", educationData)
+      .then(res=> {
+          console.log(res)
+        history.push("/dashboard");
+      })
+      .catch((err) =>
+        dispatch({
+          type: actions.GET_ERRORS,
+          payload: err.response.data,
+        })
+      );
+}

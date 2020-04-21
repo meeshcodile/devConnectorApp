@@ -57,7 +57,7 @@ const profileSchema = new Schema({
             },
             to: {
                 type: String,
-                required: true
+                // required: true
             },
             current: {
                 type: Boolean,
@@ -90,7 +90,7 @@ const profileSchema = new Schema({
             },
             to: {
                 type: String,
-                required: true
+                // required: true
             },
             current: {
                 type: Boolean,

@@ -11,23 +11,23 @@ import { createProfile} from '../../actions/profileAction'
 class CreateProfile extends Component {
     constructor(props){
         super(props)
-       this.state ={
-            displaySocialInputs:false,
-           handle:'',
-            company:'',
-            website:'',
-            location:'',
-            status:'',
-            skills:'',
-            githubusername:'',
-            bio:'',
-            twitter:'',
-            facebook:'',
-            linkedin:'',
-            youtube:'',
-            instagram:'',
-            errors:{}
-        }
+       this.state = {
+         displaySocialInputs: false,
+         handle: "",
+         company: "",
+         website: "",
+         location: "",
+         status: "",
+         skills: "",
+         githubusername: "",
+         bio: "",
+         twitter: "",
+         facebook: "",
+         linkedin: "",
+         youtube: "",
+         instagram: "",
+         errors: {},
+       };
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
 
@@ -46,7 +46,7 @@ class CreateProfile extends Component {
         const profileData ={
             handle:this.state.handle,
             company:this.state.company,
-            wbsite:this.state.location,
+            website:this.state.website,
             status:this.state.status,
             skills:this.state.skills,
             githubusername:this.state.githubusername,
@@ -76,7 +76,7 @@ class CreateProfile extends Component {
                         name="twitter"
                         icon="fab fa-twitter"
                         onChange={this.onChange}
-                        error={errors.handle}
+                        error={errors.twitter}
                         value={this.state.twitter}
                     />
                     <InputGroup
@@ -123,90 +123,100 @@ class CreateProfile extends Component {
 
         ]
         return (
-            
-            <div className="create-profile">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-8 m-auto">
-                            <h1 className="dispaly-4 text-center">create your profile</h1>
-                            <p className="lead text-center">Let get some information to make your profile complete</p>
-                            <small className="d-block pb-3 ">* required fields</small>
-                            <form onSubmit={this.onSubmit}>
-                                <TextFieldGroup
-                                    placeholder="profile handle"
-                                    name="handle"
-                                    value={this.state.handle}
-                                    onChange={this.onChange}
-                                    error={errors.handle}
-                                    info="A unique handle for your profile URL, might be your fullname comapany name or nickname"
-                                />
-                                <SelectListGroup
-                                    placeholder="status"
-                                    name="status"
-                                    value={this.state.status}
-                                    onChange={this.onChange}
-                                    error={errors.status}
-                                    options={options}
-                                    info="what is your current employment status"
-                                />
-                                <TextFieldGroup
-                                    placeholder="company"
-                                    name="company"
-                                    value={this.state.campany}
-                                    onChange={this.onChange}
-                                    error={errors.company}
-                                    info="your company name"
-                                />
-                                <TextFieldGroup
-                                    placeholder="website"
-                                    name="website"
-                                    value={this.state.website}
-                                    onChange={this.onChange}
-                                    error={errors.website}
-                                    info="what is your website address"
-                                />
-                                <TextFieldGroup
-                                    placeholder="skills"
-                                    name="skills"
-                                    value={this.state.skills}
-                                    onChange={this.onChange}
-                                    error={errors.skills}
-                                    info="what skills do you have"
-                                />
-                                <TextFieldGroup
-                                    placeholder="Github username"
-                                    name="githubusername"
-                                    value={this.state.githunusername}
-                                    onChange={this.onChange}
-                                    error={errors.githunusername}
-                                    info="what your github username"
-                                />
-                                
-                                <TextareaGroup
-                                    placeholder="Bio"
-                                    name="bio"
-                                    value={this.state.bio}
-                                    onChange={this.onChange}
-                                    error={errors.bio}
-                                    info="A short information about yourself"
-                                />
-                                <div className="mb-3">
-                                    <button type="button" onClick={()=>{
-                                        this.setState(prevState =>({
-                                            displaySocialInputs:!prevState.displaySocialInputs
-                                        }))
-                                    }} className="btn btn-light">Add your social Network links</button>
-                                    <span className="text-muted">Optional</span>
-                                </div>
-                                    {socialInputs}
-                                    <input type="submit" value="submit" className="btn btn-info btn-block mt-4" />
-                            </form>
-                        </div>
+          <div className="create-profile">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-8 m-auto">
+                  <h1 className="dispaly-4 text-center">create your profile</h1>
+                  <p className="lead text-center">
+                    Let get some information to make your profile complete
+                  </p>
+                  <small className="d-block pb-3 ">* required fields</small>
+                  <form onSubmit={this.onSubmit}>
+                    <TextFieldGroup
+                      placeholder="profile handle"
+                      name="handle"
+                      value={this.state.handle}
+                      onChange={this.onChange}
+                      error={errors.handle}
+                      info="A unique handle for your profile URL, might be your fullname comapany name or nickname"
+                    />
+                    <SelectListGroup
+                      placeholder="status"
+                      name="status"
+                      value={this.state.status}
+                      onChange={this.onChange}
+                      error={errors.status}
+                      options={options}
+                      info="what is your current employment status"
+                    />
+                    <TextFieldGroup
+                      placeholder="company"
+                      name="company"
+                      value={this.state.company}
+                      onChange={this.onChange}
+                      error={errors.company}
+                      info="your company name"
+                    />
+                    <TextFieldGroup
+                      placeholder="website"
+                      name="website"
+                      value={this.state.website}
+                      onChange={this.onChange}
+                      error={errors.website}
+                      info="what is your website address"
+                    />
+                    <TextFieldGroup
+                      placeholder="skills"
+                      name="skills"
+                      value={this.state.skills}
+                      onChange={this.onChange}
+                      error={errors.skills}
+                      info="what skills do you have"
+                    />
+                    <TextFieldGroup
+                      placeholder="Github username"
+                      name="githubusername"
+                      value={this.state.githubusername}
+                      onChange={this.onChange}
+                      error={errors.githubusername}
+                      info="what your github username"
+                    />
+
+                    <TextareaGroup
+                      placeholder="Bio"
+                      name="bio"
+                      value={this.state.bio}
+                      onChange={this.onChange}
+                      error={errors.bio}
+                      info="A short information about yourself"
+                    />
+                    <div className="mb-3">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          this.setState((prevState) => ({
+                            displaySocialInputs: !prevState.displaySocialInputs,
+                          }));
+                        }}
+                        className="btn btn-light"
+                      >
+                        Add your social Network links
+                      </button>
+                      <span className="text-muted">Optional</span>
                     </div>
+                    {socialInputs}
+                    <input
+                      type="submit"
+                      value="submit"
+                      className="btn btn-info btn-block mt-4"
+                    />
+                  </form>
                 </div>
-                
+              </div>
             </div>
-        )
+          </div>
+        );
     }
 }
 

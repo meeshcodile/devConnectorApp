@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 5000;
 const mongoose = require("mongoose");
 const mongodb = require("./config/db").MONGOURL;
 const bodyparser = require("body-parser");
@@ -8,7 +8,11 @@ const passport = require("passport");
 
 // database connection
 mongoose
-  .connect(mongodb, { useUnifiedTopology: true, useNewUrlParser: true })
+  .connect(mongodb, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useFindAndModify: false,
+  })
   .then(() => {
     console.log("database connected successfully");
   })
