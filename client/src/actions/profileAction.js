@@ -97,7 +97,7 @@ export const deleteExperience = (id) => (dispatch) => {
         payload:res.data
     })
       
-      
+
     )
     .catch((err) =>
       dispatch({

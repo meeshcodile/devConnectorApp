@@ -6,7 +6,7 @@ import Spinner from '../common/Spinner'
 import {Link} from 'react-router-dom'
 import ProfileActions from './profileActions'
 import Experience from './experience'
-import Education from './education'
+// import Education from './education'
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -36,7 +36,7 @@ class Dashboard extends Component {
               </Link>
             </p>
             <ProfileActions />
-            <Experience/>
+            <Experience experience={profile.experience}/>
             
             {/* delete account button */}
             <div style={{ marginBottom: "60px" }}>
@@ -78,7 +78,7 @@ class Dashboard extends Component {
   }
 }
 
-Dashboard.prototypes = {
+Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   deleteAccount: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
