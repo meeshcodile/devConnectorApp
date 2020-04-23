@@ -96,7 +96,6 @@ export const deleteExperience = (id) => (dispatch) => {
         type:actions.GET_PROFILE,
         payload:res.data
     })
-      
 
     )
     .catch((err) =>
@@ -124,3 +123,22 @@ export const deleteEducation = (id) => (dispatch) => {
       })
     );
 };
+
+// get all profiles
+export const getProfiles =()=> dispatch=>{
+    dispatch(setProfileLoading())
+    axios
+      .get("/api/profile/all")
+      .then(res => dispatch({
+          type:actions.GET_PROFILES,
+          payload:res.data
+      })
+        
+      )
+      .catch(err =>
+        dispatch({
+          type: actions.GET_PROFILES,
+          payload: null,
+        })
+      );
+}

@@ -19,7 +19,7 @@ import PrivateRoute from './components/common/PrivateRoute'
 import CreateProfile from './components/createProfile/CreateProfile'
 import AddExperience from './components/addDetails/addExperience'
 import AddEducation from "./components/addDetails/addEducation";
-
+import Profiles from './components/Profiles/profiles'
 
 // checking for storage
 if(localStorage.jwtToken){
@@ -52,6 +52,8 @@ function App() {
           <div className="container">
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/profile" component={Profiles} />
+
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
