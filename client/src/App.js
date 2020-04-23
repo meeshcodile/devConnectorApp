@@ -21,6 +21,7 @@ import AddExperience from './components/addDetails/addExperience'
 import AddEducation from "./components/addDetails/addEducation";
 import Profiles from './components/Profiles/profiles'
 import Profile from './components/Profile/Profile'
+import NotFound from './components/notFound/notFound'
 
 // checking for storage
 if(localStorage.jwtToken){
@@ -88,6 +89,8 @@ function App() {
                 component={AddEducation}
               />
             </Switch>
+            <Route exact path="/not-found" component={NotFound} />
+
           </div>
           <Footer />
         </div>
