@@ -9,14 +9,14 @@ class Experience extends Component {
         this.props.deleteExperience(id)
     }
     render() {
-        const experience = this.props.experience.map(exp => (
+        const experience = this.props.experience.map((exp) => (
           <tr key={exp._id}>
             <td>{exp.company}</td>
             <td>{exp.title}</td>
             <td>
-              <Moment format="YYYY/MM/DD">{exp.from}</Moment> -
-              {exp.to === null ? (
-                " Now"
+              <Moment format="YYYY/MM/DD">{exp.from}</Moment> -{" "}
+              {exp.to === "" ? (
+                "Now"
               ) : (
                 <Moment format="YYYY/MM/DD">{exp.to}</Moment>
               )}
