@@ -20,6 +20,7 @@ import CreateProfile from './components/createProfile/CreateProfile'
 import AddExperience from './components/addDetails/addExperience'
 import AddEducation from "./components/addDetails/addEducation";
 import Profiles from './components/Profiles/profiles'
+import Profile from './components/Profile/Profile'
 
 // checking for storage
 if(localStorage.jwtToken){
@@ -53,6 +54,8 @@ function App() {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/profile" component={Profiles} />
+            <Route exact path="/profile/:handle" component={Profile} />
+
 
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
