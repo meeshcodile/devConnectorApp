@@ -23,6 +23,7 @@ import Profiles from './components/Profiles/profiles'
 import Profile from './components/Profile/Profile'
 import NotFound from './components/notFound/notFound'
 import Posts from './components/Posts/Posts'
+import Post from './components/Post/Post'
 
 // checking for storage
 if(localStorage.jwtToken){
@@ -95,6 +96,13 @@ function App() {
                 exact
                 path="/feed"
                 component={Posts}
+              />
+            </Switch>
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/post/:id"
+                component={Post}
               />
             </Switch>
             <Route exact path="/not-found" component={NotFound} />

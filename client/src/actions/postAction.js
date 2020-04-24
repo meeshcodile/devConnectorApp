@@ -62,3 +62,28 @@ export const unLikePost = id => dispatch => {
             payload: err.response.data
         }))
 }
+
+// get post in other to start adding comments
+export const getCommentPost = (id) => dispatch => {
+    dispatch(setPostLoading())
+    axios.get(`/api/posts/${id}`).then(res => dispatch({
+        type: actions.GET_POST,
+        payload: res.data
+    }))
+        .catch(err => dispatch({
+            type: actions.GET_POST,
+            payload: null
+        }))
+}
+
+// add comment
+export const addComment = (postId,commentData) => dispatch => {
+    axios.post(`/api/posts/comment/${postId}`, commentData).then(res => dispatch({
+        type: actions.GET_POST,
+        payload: res.data
+    }))
+        .catch(err => dispatch({
+            type: actions.GET_ERRORS,
+            payload: err.response.data
+        }))
+}
