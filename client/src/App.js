@@ -22,6 +22,7 @@ import AddEducation from "./components/addDetails/addEducation";
 import Profiles from './components/Profiles/profiles'
 import Profile from './components/Profile/Profile'
 import NotFound from './components/notFound/notFound'
+import Posts from './components/Posts/Posts'
 
 // checking for storage
 if(localStorage.jwtToken){
@@ -87,6 +88,13 @@ function App() {
                 exact
                 path="/add-education"
                 component={AddEducation}
+              />
+            </Switch>
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/feed"
+                component={Posts}
               />
             </Switch>
             <Route exact path="/not-found" component={NotFound} />
