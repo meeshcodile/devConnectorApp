@@ -1,4 +1,4 @@
 module.exports={
     // MONGOURL:process.env.MONGOURL,
-    MONGOURL: 'mongodb://localhost/devConnector'
+    MONGOURL: 'mongodb://localhost/devConnectors'
 }
