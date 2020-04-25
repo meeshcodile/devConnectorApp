@@ -3,6 +3,7 @@ import * as actions from './actionTypes'
 
 // add post
 export const addPost = postData => dispatch =>{
+    dispatch(clearErrors())
     axios.post('/api/posts', postData).then(res=> dispatch({
         type:actions.ADD_POST,
         payload:res.data
@@ -78,6 +79,7 @@ export const getCommentPost = (id) => dispatch => {
 
 // add comment
 export const addComment = (postId,commentData) => dispatch => {
+    dispatch(clearErrors())
     axios.post(`/api/posts/comment/${postId}`, commentData).then(res => dispatch({
         type: actions.GET_POST,
         payload: res.data
@@ -86,4 +88,23 @@ export const addComment = (postId,commentData) => dispatch => {
             type: actions.GET_ERRORS,
             payload: err.response.data
         }))
+}
+
+// deleteCommetn
+export const deleteComment = (id, commentId) => dispatch => {
+    axios.delete(`/api/comment/${id}/${commentId}`).then(res => dispatch({
+        type: actions.GET_POST,
+        payload: id
+    }))
+        .catch(err => dispatch({
+            type: actions.GET_ERRORS,
+            payload: err.response.data
+        }))
+}
+
+// clear errors
+export const clearErrors =() =>{
+    return{
+        type:actions.CLEAR_ERRORS
+    }
 }
